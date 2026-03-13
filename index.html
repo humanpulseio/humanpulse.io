@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Human Pulse | Fractional TA & Hiring Strategy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #5C6B2A;
+    --green-mid: #7A8A3A;
+    --green-light: #EEF0DC;
+    --cream: #F7F2E8;
+    --cream-dark: #EDE5D0;
+    --bark: #A0502F;
+    --ink: #2E3A12;
+    --mist: #2E3A12;
+    --white: #FFFFFF;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── NAVIGATION ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 60px;
+    background: rgba(250, 247, 242, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(44, 95, 74, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .logo-mark {
+    width: 36px;
+    height: 36px;
+  }
+
+  .logo-text {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--green);
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mist);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--green); }
+
+  .nav-cta {
+    background: var(--green) !important;
+    color: var(--white) !important;
+    padding: 10px 24px !important;
+    border-radius: 2px;
+    letter-spacing: 0.06em !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--green-mid) !important; }
+
+  /* ── PAGES ── */
+  .page { display: none; padding-top: 85px; min-height: 100vh; }
+  .page.active { display: block; }
+
+  /* ── HOME PAGE ── */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - 85px);
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 70px 80px 60px;
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bark);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-eyebrow::before {
+    display: none;
+  }
+
+  .hero-headline {
+    font-family: var(--serif);
+    font-size: clamp(48px, 5vw, 72px);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 32px;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--green);
+  }
+
+  .hero-sub {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--mist);
+    max-width: 440px;
+    margin-bottom: 48px;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--green);
+    color: var(--white);
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary:hover { background: var(--green-mid); transform: translateY(-1px); }
+
+  .btn-ghost {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: var(--green);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    transition: gap 0.2s;
+  }
+
+  .btn-ghost:hover { gap: 14px; }
+  .btn-ghost::after { content: '→'; }
+
+  .hero-right {
+    background: var(--green);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-right-inner {
+    padding: 60px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-tagline-display {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 300;
+    color: rgba(255,255,255,0.95);
+    line-height: 1.4;
+    margin-bottom: 48px;
+  }
+
+  .hero-tagline-display span {
+    display: block;
+    font-style: italic;
+    color: rgba(255,255,255,0.6);
+  }
+
+  .hero-companies {
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 36px;
+  }
+
+  .hero-companies p {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 16px;
+  }
+
+  .company-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .company-pill {
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.8);
+    background: rgba(255,255,255,0.08);
+    padding: 6px 16px;
+    border-radius: 100px;
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+
+  .hero-bg-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.04;
+    background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0);
+    background-size: 32px 32px;
+  }
+
+  /* VALUE SECTION */
+  .value-section {
+    padding: 120px 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .value-left h2 {
+    font-family: var(--serif);
+    font-size: clamp(36px, 3.5vw, 52px);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+
+  .value-left p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--mist);
+    font-weight: 300;
+  }
+
+  .pillars {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .pillar {
+    padding: 32px 0;
+    border-bottom: 1px solid rgba(44, 95, 74, 0.1);
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+
+  .pillar:first-child { border-top: 1px solid rgba(44, 95, 74, 0.1); }
+
+  .pillar-num {
+    display: none;
+  }
+
+  .pillar-icon {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    margin-top: 4px;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 36 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18 29C18 29 5 20.5 5 12C5 8 8 6 11.5 6C14.5 6 16.5 8 18 10.5C19.5 8 21.5 6 24.5 6C28 6 31 8 31 12C31 20.5 18 29 18 29Z' stroke='%235C6B2A' stroke-width='1.3' fill='%23EEF0DC'/%3E%3Crect x='10' y='20' width='3.5' height='6' rx='0.5' fill='%235C6B2A' opacity='0.5'/%3E%3Crect x='14.5' y='15' width='3.5' height='11' rx='0.5' fill='%235C6B2A' opacity='0.75'/%3E%3Crect x='19' y='17' width='3.5' height='9' rx='0.5' fill='%235C6B2A'/%3E%3Crect x='23.5' y='21' width='3' height='5' rx='0.5' fill='%235C6B2A' opacity='0.45'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .pillar h3 {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--green);
+    margin-bottom: 8px;
+  }
+
+  .pillar p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--mist);
+    font-weight: 300;
+  }
+
+  /* HOME CTA BAND */
+  .cta-band {
+    background: var(--cream-dark);
+    padding: 80px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  .cta-band-text h2 {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 300;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+
+  .cta-band-text p {
+    font-size: 15px;
+    color: var(--mist);
+    font-weight: 300;
+  }
+
+  /* ── SERVICES PAGE ── */
+  .page-header {
+    padding: 80px 60px 60px;
+    max-width: 800px;
+  }
+
+  .page-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bark);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .page-eyebrow::before {
+    display: none;
+  }
+
+  .page-header h1 {
+    font-family: var(--serif);
+    font-size: clamp(40px, 4vw, 58px);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .page-header p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--mist);
+    font-weight: 300;
+    max-width: 580px;
+  }
+
+  .services-grid {
+    padding: 0 60px 80px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: rgba(44, 95, 74, 0.08);
+  }
+
+  .service-card {
+    background: var(--cream);
+    padding: 52px 44px;
+    display: flex;
+    flex-direction: column;
+    transition: background 0.3s;
+    cursor: default;
+  }
+
+  .service-card:hover { background: var(--white); }
+
+  .service-type {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--bark);
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+
+  .service-price-note {
+    font-size: 12px;
+    color: var(--mist);
+    font-weight: 300;
+    margin-top: 6px;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+
+  .service-card h2 {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--green);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .service-meta {
+    font-size: 13px;
+    color: var(--mist);
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 16px;
+  }
+
+  .service-price {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid rgba(44, 95, 74, 0.12);
+  }
+
+  .service-desc {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--mist);
+    font-weight: 300;
+    margin-bottom: 28px;
+  }
+
+  .service-list {
+    list-style: none;
+    flex: 1;
+    margin-bottom: 36px;
+  }
+
+  .service-list li {
+    font-size: 13.5px;
+    color: var(--ink);
+    font-weight: 300;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(44, 95, 74, 0.07);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.5;
+  }
+
+  .service-list li::before {
+    content: '';
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 36 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18 29C18 29 5 20.5 5 12C5 8 8 6 11.5 6C14.5 6 16.5 8 18 10.5C19.5 8 21.5 6 24.5 6C28 6 31 8 31 12C31 20.5 18 29 18 29Z' stroke='%235C6B2A' stroke-width='1.3' fill='%23EEF0DC'/%3E%3Crect x='10' y='20' width='3.5' height='6' rx='0.5' fill='%235C6B2A' opacity='0.5'/%3E%3Crect x='14.5' y='15' width='3.5' height='11' rx='0.5' fill='%235C6B2A' opacity='0.75'/%3E%3Crect x='19' y='17' width='3.5' height='9' rx='0.5' fill='%235C6B2A'/%3E%3Crect x='23.5' y='21' width='3' height='5' rx='0.5' fill='%235C6B2A' opacity='0.45'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .service-ideal {
+    font-size: 13px;
+    color: var(--bark);
+    font-style: italic;
+    line-height: 1.6;
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid rgba(44, 95, 74, 0.08);
+  }
+
+  .service-details {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+    opacity: 0;
+  }
+
+  .service-card.expanded .service-details {
+    max-height: 600px;
+    opacity: 1;
+  }
+
+  .service-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 24px;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--green);
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0;
+    transition: gap 0.2s;
+  }
+
+  .service-toggle:hover { gap: 12px; }
+
+  .service-toggle-icon {
+    font-size: 16px;
+    transition: transform 0.3s ease;
+    line-height: 1;
+  }
+
+  .service-card.expanded .service-toggle-icon {
+    transform: rotate(45deg);
+  }
+
+  /* WHY RETAINED */
+  .why-retained {
+    background: var(--green);
+    padding: 80px 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .why-retained h2 {
+    font-family: var(--serif);
+    font-size: clamp(32px, 3vw, 46px);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+
+  .why-retained p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.7);
+    font-weight: 300;
+  }
+
+  .retained-points {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .retained-point {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .retained-point-icon {
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: var(--serif);
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+  }
+
+  .retained-point-text strong {
+    display: block;
+    font-size: 15px;
+    color: var(--white);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .retained-point-text p {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+  }
+
+  /* HOW IT WORKS */
+  .how-section {
+    padding: 100px 60px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .how-section h2 {
+    font-family: var(--serif);
+    font-size: clamp(36px, 3.5vw, 52px);
+    font-weight: 300;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+
+  .how-section > p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--mist);
+    font-weight: 300;
+    margin-bottom: 64px;
+  }
+
+  .how-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    text-align: left;
+  }
+
+  .how-step {
+    position: relative;
+    padding-top: 20px;
+  }
+
+  .how-step::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--green);
+  }
+
+  .how-step-num {
+    font-family: var(--serif);
+    font-size: 42px;
+    color: var(--mist);
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .how-step h3 {
+    font-family: var(--serif);
+    font-size: 20px;
+    color: var(--ink);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  .how-step p {
+    font-size: 14px;
+    color: var(--mist);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ── ABOUT PAGE ── */
+  .about-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 70vh;
+    overflow: hidden;
+  }
+
+  .about-left {
+    background: var(--cream-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-monogram {
+    font-family: var(--serif);
+    font-size: 200px;
+    font-weight: 300;
+    color: rgba(44, 95, 74, 0.12);
+    line-height: 1;
+    user-select: none;
+    position: relative;
+    z-index: 1;
+  }
+
+  .about-left-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    padding: 60px;
+    text-align: center;
+  }
+
+  .about-name {
+    font-family: var(--serif);
+    font-size: 42px;
+    font-weight: 300;
+    color: var(--green);
+    margin-bottom: 8px;
+  }
+
+  .about-title {
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--bark);
+    font-weight: 400;
+  }
+
+  .about-right {
+    padding: 80px 70px 80px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .about-right h1 {
+    font-family: var(--serif);
+    font-size: clamp(36px, 3.5vw, 52px);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 32px;
+  }
+
+  .about-right p {
+    font-size: 15px;
+    line-height: 1.85;
+    color: var(--mist);
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+
+  .about-right p:last-of-type { margin-bottom: 0; }
+
+  /* PHILOSOPHY */
+  .philosophy {
+    padding: 100px 60px;
+    background: var(--green-light);
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .philosophy-label {
+    font-family: var(--serif);
+    font-size: 13px;
+    font-style: italic;
+    color: var(--bark);
+    padding-top: 8px;
+    letter-spacing: 0.04em;
+  }
+
+  .philosophy-content h2 {
+    font-family: var(--serif);
+    font-size: clamp(30px, 3vw, 44px);
+    font-weight: 300;
+    color: var(--ink);
+    margin-bottom: 28px;
+    line-height: 1.2;
+  }
+
+  .philosophy-content p {
+    font-size: 15px;
+    line-height: 1.85;
+    color: var(--mist);
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+
+  /* EXPERIENCE */
+  .experience {
+    padding: 100px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .experience h2 {
+    font-family: var(--serif);
+    font-size: clamp(32px, 3vw, 46px);
+    font-weight: 300;
+    color: var(--ink);
+    margin-bottom: 52px;
+  }
+
+  .exp-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2px;
+    background: rgba(44, 95, 74, 0.08);
+  }
+
+  .exp-card {
+    background: var(--cream);
+    padding: 36px 28px;
+    transition: background 0.2s;
+  }
+
+  .exp-card:hover { background: var(--white); }
+
+  .exp-company {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--green);
+    margin-bottom: 8px;
+  }
+
+  .exp-role {
+    font-size: 12px;
+    color: var(--mist);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  /* ── CONTACT PAGE ── */
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - 85px);
+  }
+
+  .contact-left {
+    background: var(--green);
+    padding: 80px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-left-bg {
+    position: absolute;
+    inset: 0;
+    opacity: 0.04;
+    background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0);
+    background-size: 28px 28px;
+  }
+
+  .contact-left-inner { position: relative; z-index: 2; }
+
+  .contact-left h1 {
+    font-family: var(--serif);
+    font-size: clamp(38px, 4vw, 56px);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 24px;
+  }
+
+  .contact-left p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.65);
+    font-weight: 300;
+    margin-bottom: 48px;
+    max-width: 400px;
+  }
+
+  .contact-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .contact-detail-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .contact-detail-item span:first-child {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    width: 60px;
+    flex-shrink: 0;
+    font-weight: 400;
+  }
+
+  .contact-detail-item span:last-child {
+    font-family: var(--serif);
+    font-size: 16px;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .contact-right {
+    padding: 80px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--cream);
+  }
+
+  .contact-right h2 {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--ink);
+    margin-bottom: 36px;
+  }
+
+  .form-group {
+    margin-bottom: 24px;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mist);
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid rgba(44, 95, 74, 0.2);
+    border-radius: 2px;
+    background: var(--white);
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--ink);
+    font-weight: 300;
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--green);
+  }
+
+  .form-group textarea { resize: vertical; min-height: 100px; }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .form-submit {
+    margin-top: 8px;
+  }
+
+  .form-success {
+    display: none;
+    background: var(--green-light);
+    border: 1px solid rgba(44, 95, 74, 0.2);
+    padding: 20px 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+
+  .form-success p {
+    font-size: 14px;
+    color: var(--green);
+    font-weight: 400;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    padding: 48px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .footer-logo {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 300;
+  }
+
+  .footer-center {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    text-align: center;
+  }
+
+  .footer-right {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    font-weight: 300;
+  }
+
+  .footer-right a {
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+  }
+
+  .footer-right a:hover { color: var(--white); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .page.active .hero-eyebrow { animation: fadeUp 0.6s ease both; }
+  .page.active .hero-headline { animation: fadeUp 0.6s 0.1s ease both; }
+  .page.active .hero-sub { animation: fadeUp 0.6s 0.2s ease both; }
+  .page.active .hero-actions { animation: fadeUp 0.6s 0.3s ease both; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 18px 24px; }
+    .nav-links { gap: 20px; }
+    .hero, .about-hero, .contact-layout, .why-retained { grid-template-columns: 1fr; }
+    .hero-right { min-height: 300px; }
+    .services-grid { grid-template-columns: 1fr !important; }
+    .exp-grid { grid-template-columns: repeat(2, 1fr); }
+    .how-steps { grid-template-columns: 1fr; }
+    .philosophy { grid-template-columns: 1fr; gap: 32px; }
+    .hero-left, .about-right, .contact-right, .contact-left { padding: 48px 24px; }
+    .value-section, .experience { padding: 60px 24px; grid-template-columns: 1fr; }
+    .services-grid, .cta-band { padding: 0 24px 48px; }
+    .how-section, .page-header { padding: 60px 24px; }
+    .why-retained { padding: 60px 24px; }
+    .cta-band { flex-direction: column; align-items: flex-start; }
+    footer { flex-direction: column; gap: 12px; text-align: center; padding: 36px 24px; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <a class="logo" href="#" onclick="showPage('home')">
+    <svg class="logo-mark" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M18 29C18 29 5 20.5 5 12C5 8 8 6 11.5 6C14.5 6 16.5 8 18 10.5C19.5 8 21.5 6 24.5 6C28 6 31 8 31 12C31 20.5 18 29 18 29Z" stroke="#5C6B2A" stroke-width="1.3" fill="#EEF0DC"/>
+      <rect x="10" y="20" width="3.5" height="6" rx="0.5" fill="#5C6B2A" opacity="0.5"/>
+      <rect x="14.5" y="15" width="3.5" height="11" rx="0.5" fill="#5C6B2A" opacity="0.75"/>
+      <rect x="19" y="17" width="3.5" height="9" rx="0.5" fill="#5C6B2A"/>
+      <rect x="23.5" y="21" width="3" height="5" rx="0.5" fill="#5C6B2A" opacity="0.45"/>
+    </svg>
+    <span class="logo-text">Human Pulse</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#" onclick="showPage('home')">Home</a></li>
+    <li><a href="#" onclick="showPage('services')">Services</a></li>
+    <li><a href="#" onclick="showPage('about')">About</a></li>
+    <li><a href="#" onclick="showPage('contact')" class="nav-cta">Work With Us</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════════════════════════════ -->
+<!-- HOME PAGE -->
+<!-- ══════════════════════════════════════ -->
+<div id="page-home" class="page active">
+
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Talent Acquisition Strategy</div>
+      <h1 class="hero-headline">
+        Hiring with <em>heart.</em><br>
+        Driven by data.<br>
+        Built on strategy.
+      </h1>
+      <p class="hero-sub">Strategic talent acquisition support that elevates your hiring with personalized, data-driven strategies, curated sourcing, and dedicated support for your team and candidates every step of the way.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="showPage('contact')">Work With Us</button>
+        <button class="btn-ghost" onclick="showPage('services')">See Services</button>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-bg-pattern"></div>
+      <div class="hero-right-inner">
+        <p class="hero-tagline-display">
+          Hiring is hard.<br>
+          <span>It doesn't have to be a guessing game.</span>
+        </p>
+        <div class="hero-companies">
+          <p>Experience from</p>
+          <div class="company-list">
+            <span class="company-pill">Nike</span>
+            <span class="company-pill">Amazon</span>
+            <span class="company-pill">DoorDash</span>
+            <span class="company-pill">Sonos</span>
+            <span class="company-pill">hims & hers</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="value-section">
+    <div class="value-left">
+      <h2>The recruiting expertise your team needs, without adding headcount.</h2>
+      <p>Job reqs pile up, processes break down, and the wrong hires cost more than just money. Human Pulse brings structure, strategy, and the right data to your talent function so your team can grow with confidence.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-icon"></div>
+        <div>
+          <h3>Data-Informed</h3>
+          <p>Every recommendation is rooted in your hiring data, market trends, and what's working for companies at your stage. No guessing.</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon"></div>
+        <div>
+          <h3>Strategically Built</h3>
+          <p>From sourcing to offer, we design hiring processes that scale with you.</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon"></div>
+        <div>
+          <h3>Human First</h3>
+          <p>Recruiting is about people. We build candidate experiences and hiring cultures that reflect the company you're trying to become.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <div class="cta-band-text">
+      <h2>Ready to make hiring your competitive advantage?</h2>
+      <p>Let's talk about where you are and where you want to go.</p>
+    </div>
+    <button class="btn-primary" onclick="showPage('contact')">Tell Us About Your Hiring Needs</button>
+  </div>
+
+  <footer>
+    <div class="footer-logo">Human Pulse</div>
+    <div class="footer-center">© 2026 Human Pulse LLC</div>
+    <div class="footer-right"><a href="mailto:hello@humanpulse.io" style="color:inherit;text-decoration:none;">hello@humanpulse.io</a></div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- SERVICES PAGE -->
+<!-- ══════════════════════════════════════ -->
+<div id="page-services" class="page">
+
+  <div class="page-header">
+    <div class="page-eyebrow">Services</div>
+    <h1>Hiring strategy, built for where you are.</h1>
+    <p>Whether you're hiring your first 10 people or scaling your 100th role, Human Pulse meets you where you are and builds what you actually need.</p>
+  </div>
+
+  <div class="services-grid" style="grid-template-columns: repeat(4, 1fr);">
+    <div class="service-card">
+      <div class="service-type">One-Time · Flat Fee</div>
+      <h2>Sampler Platter</h2>
+      <div class="service-meta">A taste of what we do</div>
+      <div class="service-price">$800</div>
+      <p class="service-price-note">One role, one time. No retainer required.</p>
+      <button class="service-toggle" onclick="toggleCard(this)">
+        <span>Learn more</span><span class="service-toggle-icon">+</span>
+      </button>
+      <div class="service-details">
+        <p class="service-desc">Not ready to commit to a full engagement? This is your low-risk way to see Human Pulse in action. We source and deliver up to three vetted, curated candidate profiles for one open role, with a brief assessment on each.</p>
+        <ul class="service-list">
+          <li>Up to 3 sourced and vetted profiles</li>
+          <li>Brief written assessment on each candidate</li>
+          <li>One target role, scoped in advance</li>
+        </ul>
+        <p class="service-ideal">If you want to see what Human Pulse can offer, this is a good place to start. From there, you can retain us for ongoing support or take it from here yourself.</p>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-type">Project-Based · 2–4 Weeks</div>
+      <h2>Hiring Strategy & Advisory</h2>
+      <div class="service-meta">For teams that need clarity before they hire</div>
+      <div class="service-price">Starting at $2,500 per month</div>
+      <p class="service-price-note">Scope and hours vary based on stage and hiring complexity.</p>
+      <button class="service-toggle" onclick="toggleCard(this)">
+        <span>Learn more</span><span class="service-toggle-icon">+</span>
+      </button>
+      <div class="service-details">
+        <p class="service-desc">This engagement focuses on setting the foundation for effective, scalable hiring. We partner with leaders to define what success looks like in a role, assess current hiring processes, and design a clear strategy aligned to business goals.</p>
+        <ul class="service-list">
+          <li>Hiring strategy and workforce planning</li>
+          <li>Role definition and success profiles</li>
+          <li>Interview structure and process design</li>
+          <li>Recruiting metrics and decision frameworks</li>
+          <li>Hiring manager enablement and alignment</li>
+        </ul>
+        <p class="service-ideal">Ideal for teams navigating growth, change, or uncertainty around where to focus next.</p>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-type">Monthly Retainer · Min. 2–3 Months</div>
+      <h2>Embedded Recruiting</h2>
+      <div class="service-meta">For teams that need experienced support without a full-time hire</div>
+      <div class="service-price">Starting at $4,500 per month</div>
+      <p class="service-price-note">Retainer scales with hiring volume and level of support.</p>
+      <button class="service-toggle" onclick="toggleCard(this)">
+        <span>Learn more</span><span class="service-toggle-icon">+</span>
+      </button>
+      <div class="service-details">
+        <p class="service-desc">Human Pulse embeds directly with your team to provide hands-on recruiting support while maintaining a strategic lens. This model works well for periods of growth, backfills, or when internal capacity is limited.</p>
+        <ul class="service-list">
+          <li>Full-cycle recruiting support</li>
+          <li>Close partnership with hiring managers</li>
+          <li>Thoughtful candidate outreach and experience</li>
+          <li>Data-informed pipeline management</li>
+          <li>Regular communication and reporting</li>
+        </ul>
+        <p class="service-ideal">Designed to feel like an extension of your team, not an external vendor.</p>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-type">Retained Engagement · 3–6 Months</div>
+      <h2>Leadership & Executive Search</h2>
+      <div class="service-meta">For critical hires where alignment matters</div>
+      <div class="service-price">Starting at $6,500 per month</div>
+      <p class="service-price-note">Final engagement based on search complexity and role seniority.</p>
+      <button class="service-toggle" onclick="toggleCard(this)">
+        <span>Learn more</span><span class="service-toggle-icon">+</span>
+      </button>
+      <div class="service-details">
+        <p class="service-desc">We support leadership and executive searches with a structured, high-touch approach focused on long-term fit. Each search is tailored to the role, the team, and the broader business context.</p>
+        <ul class="service-list">
+          <li>Search strategy and stakeholder alignment</li>
+          <li>Candidate sourcing and evaluation</li>
+          <li>Structured interview design</li>
+          <li>Offer support and decision guidance</li>
+        </ul>
+        <p class="service-ideal">Built for Director-level and above, the critical hires that unlock your next stage of growth.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="why-retained">
+    <div>
+      <h2>Why we don't work on contingency.</h2>
+      <p>Contingency search creates misaligned incentives. When a recruiter only gets paid if a candidate is placed, speed can win over fit. Our retained model means we're focused entirely on finding the right person for your team, not the fastest one to close.</p>
+    </div>
+    <div class="retained-points">
+      <div class="retained-point">
+        <div class="retained-point-icon">1</div>
+        <div class="retained-point-text">
+          <strong>We're a partner, not a broker</strong>
+          <p>Retained engagements align our incentives entirely with yours: finding the right hire, not just any hire.</p>
+        </div>
+      </div>
+      <div class="retained-point">
+        <div class="retained-point-icon">2</div>
+        <div class="retained-point-text">
+          <strong>Better outcomes, less pressure</strong>
+          <p>Without commission pressure, we can take the time to get it right and give you our honest assessment.</p>
+        </div>
+      </div>
+      <div class="retained-point">
+        <div class="retained-point-icon">3</div>
+        <div class="retained-point-text">
+          <strong>Real partnership</strong>
+          <p>You get a strategic thought partner embedded in the process, not someone checking in only when they have a candidate.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="how-section">
+    <h2>How it works</h2>
+    <p>Every engagement starts with a conversation to understand your goals, challenges, and timeline. From there, we recommend a level of support aligned to your needs.</p>
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="how-step-num">01</div>
+        <h3>Tell us where you are</h3>
+        <p>Fill out a short inquiry form. The more detail you share, the better Human Pulse can come prepared for your unique challenges and hit the ground running from day one.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num">02</div>
+        <h3>Free 30-min consultation</h3>
+        <p>A no-pressure call to talk through your hiring needs and figure out the right fit, or whether we're even the right fit at all.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num">03</div>
+        <h3>We get to work</h3>
+        <p>Once aligned on scope and approach, we move fast. Your hiring needs aren't waiting around.</p>
+      </div>
+    </div>
+    <br><br>
+    <button class="btn-primary" onclick="showPage('contact')">Start the Conversation</button>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Human Pulse</div>
+    <div class="footer-center">© 2026 Human Pulse LLC</div>
+    <div class="footer-right"><a href="mailto:hello@humanpulse.io" style="color:inherit;text-decoration:none;">hello@humanpulse.io</a></div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- ABOUT PAGE -->
+<!-- ══════════════════════════════════════ -->
+<div id="page-about" class="page">
+
+  <div class="about-hero">
+    <div class="about-left">
+      <div class="about-left-content">
+        <svg width="80" height="80" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:24px;">
+          <path d="M18 29C18 29 5 20.5 5 12C5 8 8 6 11.5 6C14.5 6 16.5 8 18 10.5C19.5 8 21.5 6 24.5 6C28 6 31 8 31 12C31 20.5 18 29 18 29Z" stroke="#5C6B2A" stroke-width="1.3" fill="#EEF0DC"/>
+          <rect x="10" y="20" width="3.5" height="6" rx="0.5" fill="#5C6B2A" opacity="0.5"/>
+          <rect x="14.5" y="15" width="3.5" height="11" rx="0.5" fill="#5C6B2A" opacity="0.75"/>
+          <rect x="19" y="17" width="3.5" height="9" rx="0.5" fill="#5C6B2A"/>
+          <rect x="23.5" y="21" width="3" height="5" rx="0.5" fill="#5C6B2A" opacity="0.45"/>
+        </svg>
+        <div class="about-name" style="font-size:28px;">Human Pulse</div>
+        <div class="about-title">Fractional Talent Acquisition</div>
+      </div>
+    </div>
+    <div class="about-right">
+      <h1>Built for the moment hiring got complicated.</h1>
+      <p>Hiring has never had more tools. It's also never felt more impersonal.</p>
+      <p>Human Pulse exists at that intersection. AI and data are powerful, but they don't build trust with a candidate, read a room with a founder, or know when a role needs to be redefined before it's filled. That takes judgment, experience, and genuine care.</p>
+      <p>Human Pulse was built on the belief that the best hiring decisions come from combining both: the rigor of data-driven strategy with the irreplaceable value of human connection. Smart sourcing, thoughtful candidate experience, and recruiting infrastructure designed to scale with you.</p>
+      <p>Driven by data. Built by people who give a damn.</p>
+    </div>
+  </div>
+
+  <div class="philosophy">
+    <div class="philosophy-label">Our philosophy</div>
+    <div class="philosophy-content">
+      <h2>How we think about hiring.</h2>
+      <p>Great recruiting isn't about filling seats. It's about understanding what a company actually needs, building systems that find those people consistently, and creating an experience that makes candidates want to say yes.</p>
+      <p>We believe in data over gut instinct, process over heroics, and treating candidates like the humans they are. Those aren't just values. They're what produces better hires, faster.</p>
+      <br>
+      <button class="btn-primary" onclick="showPage('contact')">Work With Us</button>
+    </div>
+  </div>
+
+  <section class="experience">
+    <h2>Experience that speaks for itself.</h2>
+    <div class="exp-grid">
+      <div class="exp-card">
+        <div class="exp-company">Nike</div>
+        <div class="exp-role">Corporate & Retail Recruiting</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-company">Amazon</div>
+        <div class="exp-role">High-Volume TA & Operations Launch</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-company">DoorDash</div>
+        <div class="exp-role">Full-Cycle Recruiting, Rapid Scale</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-company">Sonos</div>
+        <div class="exp-role">Executive Candidate Experience</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-company">hims & hers</div>
+        <div class="exp-role">Scaling operations for high growth</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Human Pulse</div>
+    <div class="footer-center">© 2026 Human Pulse LLC</div>
+    <div class="footer-right"><a href="mailto:hello@humanpulse.io" style="color:inherit;text-decoration:none;">hello@humanpulse.io</a></div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- CONTACT PAGE -->
+<!-- ══════════════════════════════════════ -->
+<div id="page-contact" class="page">
+  <div class="contact-layout">
+    <div class="contact-left">
+      <div class="contact-left-bg"></div>
+      <div class="contact-left-inner">
+        <h1>Let's talk about your hiring.</h1>
+        <p>Fill out the form and we'll be in touch within one business day. The more detail you share, the better we can prepare for our first conversation.</p>
+        <div class="contact-detail">
+          <div class="contact-detail-item">
+            <span>Email</span>
+            <span><a href="mailto:hello@humanpulse.io" style="color:inherit;text-decoration:none;">hello@humanpulse.io</a></span>
+          </div>
+          <div class="contact-detail-item">
+            <span>Based</span>
+            <span>Remote · Available Nationwide</span>
+          </div>
+          <div class="contact-detail-item">
+            <span>Works</span>
+            <span>Remote · US-wide</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-right">
+      <h2>Tell us about your hiring needs.</h2>
+      <form id="inquiry-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="First and last name" required>
+          </div>
+          <div class="form-group">
+            <label>Company Name</label>
+            <input type="text" placeholder="Your company" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Company Stage</label>
+            <select required>
+              <option value="" disabled selected>Select stage</option>
+              <option>Pre-seed</option>
+              <option>Seed</option>
+              <option>Series A</option>
+              <option>Series B</option>
+              <option>Series C+</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Type of Support</label>
+            <select required>
+              <option value="" disabled selected>Select service</option>
+              <option>Hiring Strategy & Advisory</option>
+              <option>Embedded Recruiting</option>
+              <option>Leadership & Executive Search</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>What's your biggest hiring challenge right now?</label>
+          <textarea placeholder="Tell us what's going on..." required></textarea>
+        </div>
+        <div class="form-group">
+          <label>How did you hear about Human Pulse?</label>
+          <input type="text" placeholder="LinkedIn, referral, Google...">
+        </div>
+        <div class="form-submit">
+          <button type="submit" class="btn-primary" style="width:100%">Send My Inquiry</button>
+        </div>
+        <div class="form-success" id="form-success">
+          <p>✓ Thanks for reaching out! We'll be in touch within one business day.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-logo">Human Pulse</div>
+    <div class="footer-center">© 2026 Human Pulse LLC</div>
+    <div class="footer-right"><a href="mailto:hello@humanpulse.io" style="color:inherit;text-decoration:none;">hello@humanpulse.io</a></div>
+  </footer>
+</div>
+
+<script>
+  function toggleCard(btn) {
+    const card = btn.closest('.service-card');
+    const isExpanded = card.classList.contains('expanded');
+    card.classList.toggle('expanded');
+    btn.querySelector('span:first-child').textContent = isExpanded ? 'Learn more' : 'Show less';
+  }
+
+  function showPage(name) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    const target = document.getElementById('page-' + name);
+    if (target) {
+      target.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('form-success').style.display = 'block';
+    e.target.querySelectorAll('input, select, textarea, button[type=submit]').forEach(el => el.disabled = true);
+  }
+</script>
+</body>
+</html>
