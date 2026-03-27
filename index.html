@@ -1509,6 +1509,28 @@
   </footer>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   function toggleCard(btn) {
-    const card = btn.cl
+    const card = btn.closest('.service-card');
+    const isExpanded = card.classList.contains('expanded');
+    card.classList.toggle('expanded');
+    btn.querySelector('span:first-child').textContent = isExpanded ? 'Learn more' : 'Show less';
+  }
+
+  function showPage(name) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    const target = document.getElementById('page-' + name);
+    if (target) {
+      target.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('form-success').style.display = 'block';
+    e.target.querySelectorAll('input, select, textarea, button[type=submit]').forEach(el => el.disabled = true);
+  }
+</script>
+</body>
+</html>
