@@ -409,160 +409,102 @@
 
   .services-grid {
     padding: 0 60px 80px;
+  }
+
+  .service-row {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    background: rgba(44, 95, 74, 0.08);
-    align-items: stretch;
+    grid-template-columns: 260px 1fr auto;
+    gap: 40px;
+    align-items: start;
+    padding: 40px 0;
+    border-bottom: 1px solid rgba(44, 95, 74, 0.1);
   }
 
-  .service-card {
-    background: var(--cream);
-    padding: 52px 44px;
-    display: flex;
-    flex-direction: column;
-    transition: background 0.3s;
-    cursor: default;
-    align-self: stretch;
-  }
+  .service-row:first-child { border-top: 1px solid rgba(44, 95, 74, 0.1); }
 
-  .service-card:hover { background: var(--white); }
+  .service-row-left {}
 
-  .service-type {
+  .service-row-type {
     font-size: 10px;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--bark);
-    margin-bottom: 16px;
+    margin-bottom: 10px;
     font-weight: 500;
   }
 
-  .service-price-note {
-    font-size: 12px;
-    color: var(--mist);
-    font-weight: 300;
-    margin-top: 6px;
-    margin-bottom: 20px;
-    font-style: italic;
-  }
-
-  .service-card h2 {
+  .service-row-name {
     font-family: var(--serif);
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 600;
     color: var(--green);
     line-height: 1.2;
     margin-bottom: 8px;
   }
 
-  .service-meta {
+  .service-row-meta {
     font-size: 13px;
     color: var(--mist);
-    font-weight: 300;
     font-style: italic;
-    margin-bottom: 16px;
-  }
-
-  .service-price {
-    font-family: var(--serif);
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--ink);
-    margin-bottom: 28px;
-    padding-bottom: 28px;
-    border-bottom: 1px solid rgba(44, 95, 74, 0.12);
-  }
-
-  .service-desc {
-    font-size: 14px;
-    line-height: 1.75;
-    color: var(--mist);
     font-weight: 300;
-    margin-bottom: 28px;
-  }
-
-  .service-list {
-    list-style: none;
-    flex: 1;
-    margin-bottom: 36px;
-  }
-
-  .service-list li {
-    font-size: 13.5px;
-    color: var(--ink);
-    font-weight: 300;
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(44, 95, 74, 0.07);
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
     line-height: 1.5;
   }
 
-  .service-list li::before {
-    content: '';
-    display: inline-block;
-    width: 14px;
-    height: 14px;
-    flex-shrink: 0;
-    margin-top: 2px;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 36 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18 29C18 29 5 20.5 5 12C5 8 8 6 11.5 6C14.5 6 16.5 8 18 10.5C19.5 8 21.5 6 24.5 6C28 6 31 8 31 12C31 20.5 18 29 18 29Z' stroke='%235C6B2A' stroke-width='1.3' fill='%23EEF0DC'/%3E%3Crect x='10' y='20' width='3.5' height='6' rx='0.5' fill='%235C6B2A' opacity='0.5'/%3E%3Crect x='14.5' y='15' width='3.5' height='11' rx='0.5' fill='%235C6B2A' opacity='0.75'/%3E%3Crect x='19' y='17' width='3.5' height='9' rx='0.5' fill='%235C6B2A'/%3E%3Crect x='23.5' y='21' width='3' height='5' rx='0.5' fill='%235C6B2A' opacity='0.45'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-size: contain;
+  .service-row-middle {}
+
+  .service-row-desc {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--mist);
+    font-weight: 300;
+    margin-bottom: 20px;
   }
 
-  .service-ideal {
+  .service-row-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .service-row-list li {
+    font-size: 12px;
+    color: var(--green);
+    font-weight: 400;
+    background: var(--green-light);
+    padding: 4px 12px;
+    border-radius: 100px;
+  }
+
+  .service-row-ideal {
     font-size: 13px;
     color: var(--bark);
     font-style: italic;
     line-height: 1.6;
-    margin-top: auto;
-    padding-top: 20px;
-    border-top: 1px solid rgba(44, 95, 74, 0.08);
+    font-weight: 300;
   }
 
-  .service-details {
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.4s ease, opacity 0.3s ease;
-    opacity: 0;
+  .service-row-right {
+    text-align: right;
+    min-width: 160px;
   }
 
-  .service-card.expanded .service-details {
-    max-height: 1000px;
-    opacity: 1;
+  .service-row-price {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
   }
 
-  .service-toggle {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 24px;
-    font-family: var(--sans);
+  .service-row-price-note {
     font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--green);
-    cursor: pointer;
-    border: none;
-    background: none;
-    padding: 0;
-    transition: gap 0.2s;
+    color: var(--mist);
+    font-weight: 300;
+    margin-top: 4px;
+    font-style: italic;
   }
-
-  .service-toggle:hover { gap: 12px; }
-
-  .service-toggle-icon {
-    font-size: 16px;
-    transition: transform 0.3s ease;
-    line-height: 1;
-  }
-
-  .service-card.expanded .service-toggle-icon {
-    transform: rotate(45deg);
-  }
-
   /* WHY RETAINED */
   .why-retained {
     background: var(--green);
@@ -1070,7 +1012,9 @@
     .nav-links li:not(:last-child) { display: none; }
     .hero, .about-hero, .contact-layout, .why-retained { grid-template-columns: 1fr; }
     .hero-right { min-height: 300px; }
-    .services-grid { grid-template-columns: 1fr !important; }
+    .services-grid { padding: 0 24px 48px; }
+    .service-row { grid-template-columns: 1fr; gap: 16px; }
+    .service-row-right { text-align: left; }
     .exp-grid { grid-template-columns: repeat(2, 1fr); }
     .how-steps { grid-template-columns: 1fr; }
     .philosophy { grid-template-columns: 1fr; gap: 32px; }
@@ -1203,91 +1147,68 @@
     <p>Whether you're hiring your first 10 people or scaling your 100th role, Human Pulse meets you where you are and builds what you actually need.</p>
   </div>
 
-  <div class="services-grid" style="grid-template-columns: repeat(4, 1fr);">
-    <div class="service-card">
-      <div class="service-type">One-Time · Flat Fee</div>
-      <h2>Sampler Platter</h2>
-      <div class="service-meta">A taste of what we do</div>
-      <div class="service-price">$800</div>
-      <p class="service-price-note">One role, one time. No retainer required.</p>
-      <button class="service-toggle" onclick="toggleCard(this)">
-        <span>Learn more</span><span class="service-toggle-icon">+</span>
-      </button>
-      <div class="service-details">
-        <p class="service-desc">Not ready to commit to a full engagement? This is your low-risk way to see Human Pulse in action. We source and deliver up to three vetted, curated candidate profiles for one open role, with a brief assessment on each.</p>
-        <ul class="service-list">
-          <li>Up to 3 sourced and vetted profiles</li>
-          <li>Brief written assessment on each candidate</li>
-          <li>One target role, scoped in advance</li>
-        </ul>
-        <p class="service-ideal">If you want to see what Human Pulse can offer, this is a good place to start. From there, you can retain us for ongoing support or take it from here yourself.</p>
+  <div class="services-grid">
+
+    <div class="service-row">
+      <div class="service-row-left">
+        <div class="service-row-type">One-Time · Flat Fee</div>
+        <div class="service-row-name">Sampler Platter</div>
+        <div class="service-row-meta">A taste of what we do</div>
+      </div>
+      <div class="service-row-middle">
+        <p class="service-row-desc">A low-risk way to experience Human Pulse. We deliver vetted candidate profiles for one role with a brief assessment on each. Every engagement is scoped to your specific needs.</p>
+      </div>
+      <div class="service-row-right">
+        <div class="service-row-price">$800</div>
+        <div class="service-row-price-note">flat fee · one role</div>
       </div>
     </div>
 
-    <div class="service-card">
-      <div class="service-type">Project-Based · 2–4 Weeks</div>
-      <h2>Hiring Strategy & Advisory</h2>
-      <div class="service-meta">For teams that need clarity before they hire</div>
-      <div class="service-price">Starting at $2,500 per month</div>
-      <p class="service-price-note">Scope and hours vary based on stage and hiring complexity.</p>
-      <button class="service-toggle" onclick="toggleCard(this)">
-        <span>Learn more</span><span class="service-toggle-icon">+</span>
-      </button>
-      <div class="service-details">
-        <p class="service-desc">This engagement focuses on setting the foundation for effective, scalable hiring. We partner with leaders to define what success looks like in a role, assess current hiring processes, and design a clear strategy aligned to business goals.</p>
-        <ul class="service-list">
-          <li>Hiring strategy and workforce planning</li>
-          <li>Role definition and success profiles</li>
-          <li>Interview structure and process design</li>
-          <li>Hiring metrics and decision frameworks</li>
-          <li>Hiring manager enablement and alignment</li>
-        </ul>
-        <p class="service-ideal">Ideal for teams navigating growth, change, or uncertainty around where to focus next.</p>
+    <div class="service-row">
+      <div class="service-row-left">
+        <div class="service-row-type">Project-Based · 2–4 Weeks</div>
+        <div class="service-row-name">Hiring Strategy & Advisory</div>
+        <div class="service-row-meta">For teams that need clarity before they hire</div>
+      </div>
+      <div class="service-row-middle">
+        <p class="service-row-desc">We assess where you are, design a strategy aligned to your goals, and build a hiring framework tailored to your stage and growth trajectory.</p>
+      </div>
+      <div class="service-row-right">
+        <div class="service-row-price">From $2,500</div>
+        <div class="service-row-price-note">per month · scope varies</div>
       </div>
     </div>
 
-    <div class="service-card">
-      <div class="service-type">Monthly Retainer · Min. 2–3 Months</div>
-      <h2>Embedded Talent Support</h2>
-      <div class="service-meta">For teams that need experienced support without a full-time hire</div>
-      <div class="service-price">Starting at $4,500 per month</div>
-      <p class="service-price-note">Retainer scales with hiring volume and level of support.</p>
-      <button class="service-toggle" onclick="toggleCard(this)">
-        <span>Learn more</span><span class="service-toggle-icon">+</span>
-      </button>
-      <div class="service-details">
-        <p class="service-desc">Human Pulse embeds directly with your team to provide hands-on recruiting support while maintaining a strategic lens. This model works well for periods of growth, backfills, or when internal capacity is limited.</p>
-        <ul class="service-list">
-          <li>Full-cycle recruiting support</li>
-          <li>Close partnership with hiring managers</li>
-          <li>Thoughtful candidate outreach and experience</li>
-          <li>Data-informed pipeline management</li>
-          <li>Regular communication and reporting</li>
-        </ul>
-        <p class="service-ideal">Designed to feel like an extension of your team, not an external vendor.</p>
+    <div class="service-row">
+      <div class="service-row-left">
+        <div class="service-row-type">Monthly Retainer · Min. 2–3 Months</div>
+        <div class="service-row-name">Embedded Talent Partner</div>
+        <div class="service-row-meta">For teams ready to scale with intention</div>
+      </div>
+      <div class="service-row-middle">
+        <p class="service-row-desc">Hands-on execution with a strategist's eye. We embed directly with your team, building pipelines and partnering with hiring managers, tailored to your volume and pace.</p>
+      </div>
+      <div class="service-row-right">
+        <div class="service-row-price">From $4,500</div>
+        <div class="service-row-price-note">per month · retainer</div>
       </div>
     </div>
 
-    <div class="service-card">
-      <div class="service-type">Retained Engagement · 3–6 Months</div>
-      <h2>Leadership & Executive Search</h2>
-      <div class="service-meta">For critical hires where alignment matters</div>
-      <div class="service-price">Starting at $6,500 per month</div>
-      <p class="service-price-note">Final engagement based on search complexity and role seniority.</p>
-      <button class="service-toggle" onclick="toggleCard(this)">
-        <span>Learn more</span><span class="service-toggle-icon">+</span>
-      </button>
-      <div class="service-details">
-        <p class="service-desc">We support leadership and executive searches with a structured, high-touch approach focused on long-term fit. Each search is tailored to the role, the team, and the broader business context.</p>
-        <ul class="service-list">
-          <li>Search strategy and stakeholder alignment</li>
-          <li>Candidate sourcing and evaluation</li>
-          <li>Structured interview design</li>
-          <li>Offer support and decision guidance</li>
-        </ul>
-        <p class="service-ideal">Built for Director-level and above, the critical hires that unlock your next stage of growth.</p>
+    <div class="service-row">
+      <div class="service-row-left">
+        <div class="service-row-type">Retained Engagement · 3–6 Months</div>
+        <div class="service-row-name">Leadership & Executive Search</div>
+        <div class="service-row-meta">For critical hires where alignment matters most</div>
+      </div>
+      <div class="service-row-middle">
+        <p class="service-row-desc">High-touch search for Director-level and above. Every search is structured around your specific role, team, and business context.</p>
+      </div>
+      <div class="service-row-right">
+        <div class="service-row-price">From $6,500</div>
+        <div class="service-row-price-note">per month · retained</div>
       </div>
     </div>
+
   </div>
 
   <div class="why-retained">
@@ -1482,7 +1403,7 @@
             <select required>
               <option value="" disabled selected>Select service</option>
               <option>Hiring Strategy & Advisory</option>
-              <option>Embedded Talent Support</option>
+              <option>Embedded Talent Partner</option>
               <option>Leadership & Executive Search</option>
               <option>Not sure yet</option>
             </select>
